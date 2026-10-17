@@ -12,10 +12,18 @@ public class MovieTicketKiosk {
         System.out.print("What is your name? ");
         String customerName = scanner.nextLine();
 
-        int age = 34;
-        int ticketCount = 3;
-        String dayOfWeek = "Tuesday";
-        boolean isMember = true;
+        System.out.print("How old are you? ");
+        int age = scanner.nextInt();
+
+        System.out.print("How many tickets? ");
+        int ticketCount = scanner.nextInt();
+        scanner.nextLine();                          // eats the Enter left after the last number
+
+        System.out.print("What day is it? ");
+        String dayOfWeek = scanner.nextLine();
+
+        System.out.print("Are you a member (yes/no)? ");
+        String memberAnswer = scanner.nextLine();
 
         // Prices
         double basePrice = 12.00;
