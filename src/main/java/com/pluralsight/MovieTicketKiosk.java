@@ -15,10 +15,15 @@ public class MovieTicketKiosk {
         double dayDiscount = 3.00;
         final double SERVICE_FEE = 1.50;
 
-        // Check the values
-        System.out.println("Customer: " + customerName);
-        System.out.println("Tickets: " + ticketCount);
-        System.out.println("Member: " + isMember);
-        System.out.println("Base price: " + basePrice);
+        // Price per ticket after the day discount
+        double ticketPrice = basePrice - dayDiscount; // 9
+        double subtotal = ticketPrice * ticketCount; //27
+        double memberDiscount = 0.00;                // no member discount yet
+        double total = subtotal - memberDiscount + SERVICE_FEE;
+
+        System.out.println("Ticket price: " + ticketPrice);
+        System.out.println("Subtotal: " + subtotal);
+        System.out.println("Total: " + total);
     }
+
 }
