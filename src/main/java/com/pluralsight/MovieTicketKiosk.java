@@ -14,16 +14,21 @@ public class MovieTicketKiosk {
         double basePrice = 12.00;
         double dayDiscount = 3.00;
         final double SERVICE_FEE = 1.50;
+        final double MINIMUM_TICKET_PRICE = 5.00;
 
-        // Price per ticket after the day discount
-        double ticketPrice = basePrice - dayDiscount; // 9
-        double subtotal = ticketPrice * ticketCount; //27
+        // Price per ticket after the day discount, never below the minimum
+        double ticketPrice = Math.max(basePrice - dayDiscount, MINIMUM_TICKET_PRICE);
+        double subtotal = ticketPrice * ticketCount;
         double memberDiscount = 0.00;                // no member discount yet
         double total = subtotal - memberDiscount + SERVICE_FEE;
+        long rewardPoints = Math.round(total);       // one point per dollar, rounded
 
         System.out.println("Ticket price: " + ticketPrice);
         System.out.println("Subtotal: " + subtotal);
         System.out.println("Total: " + total);
+        System.out.println("Reward points: " + rewardPoints);
+
+
     }
 
 }
