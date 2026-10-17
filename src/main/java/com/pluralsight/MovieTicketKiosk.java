@@ -1,10 +1,17 @@
 package com.pluralsight;
 
+import java.util.Scanner;
 public class MovieTicketKiosk {
     public static void main(String[] args) {
         System.out.println("Welcome to the Movie Ticket Kiosk");
-        // Customer details, typed in by hand for now
-        String customerName = "Maya";
+
+        // One Scanner reads everything the user types
+        Scanner scanner = new Scanner(System.in);
+
+        // Customer details
+        System.out.print("What is your name? ");
+        String customerName = scanner.nextLine();
+
         int age = 34;
         int ticketCount = 3;
         String dayOfWeek = "Tuesday";
@@ -32,6 +39,8 @@ public class MovieTicketKiosk {
         System.out.printf("Service fee:     $%.2f%n", SERVICE_FEE);
         System.out.printf("Total:           $%.2f%n", total);
         System.out.printf("Reward points:   %d%n", rewardPoints);
+
+        scanner.close();                             // done reading: release the keyboard
 
 
     }
