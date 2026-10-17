@@ -26,7 +26,17 @@ public class MovieTicketKiosk {
         String memberAnswer = scanner.nextLine();
 
         // Prices
-        double basePrice = 12.00;
+
+        // Base price by age: the first true condition wins
+        double basePrice;
+        if (age < 13) {
+            basePrice = 8.50;
+        } else if (age < 65) {
+            basePrice = 12.00;
+        } else {
+            basePrice = 9.00;
+        }
+
         double dayDiscount = 3.00;
         final double SERVICE_FEE = 1.50;
         final double MINIMUM_TICKET_PRICE = 5.00;
