@@ -23,10 +23,15 @@ public class MovieTicketKiosk {
         double total = subtotal - memberDiscount + SERVICE_FEE;
         long rewardPoints = Math.round(total);       // one point per dollar, rounded
 
-        System.out.println("Ticket price: " + ticketPrice);
-        System.out.println("Subtotal: " + subtotal);
-        System.out.println("Total: " + total);
-        System.out.println("Reward points: " + rewardPoints);
+        // Receipt
+        System.out.println();
+        System.out.printf("Customer:        %s%n", customerName);
+        System.out.printf("Tickets:         %d x $%.2f%n", ticketCount, ticketPrice);
+        System.out.printf("Subtotal:        $%.2f%n", subtotal);
+        System.out.printf("Member discount: $%.2f%n", memberDiscount);
+        System.out.printf("Service fee:     $%.2f%n", SERVICE_FEE);
+        System.out.printf("Total:           $%.2f%n", total);
+        System.out.printf("Reward points:   %d%n", rewardPoints);
 
 
     }
