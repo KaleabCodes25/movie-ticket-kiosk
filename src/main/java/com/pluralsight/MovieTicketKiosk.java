@@ -22,8 +22,7 @@ public class MovieTicketKiosk {
         System.out.print("What day is it? ");
         String dayOfWeek = scanner.nextLine();
 
-        System.out.print("Are you a member (yes/no)? ");
-        String memberAnswer = scanner.nextLine();
+        boolean isMember = askIsMember(scanner);     // the same Scanner travels to the method
 
         // Prices
 
@@ -38,7 +37,6 @@ public class MovieTicketKiosk {
         double ticketPrice = Math.max(basePrice - dayDiscount, MINIMUM_TICKET_PRICE);
         double subtotal = ticketPrice * ticketCount;
 
-        boolean isMember = memberAnswer.equalsIgnoreCase("yes");
         double memberDiscount = getMemberDiscount(subtotal, ticketCount, isMember);
 
         double total = subtotal - memberDiscount + SERVICE_FEE;
@@ -73,6 +71,13 @@ public class MovieTicketKiosk {
         }
         return basePrice;
     }
+
+    // Asks the member question with the Scanner it receives
+    public static boolean askIsMember(Scanner scanner) {
+        System.out.print("Are you a member (yes/no)? ");
+        String memberAnswer = scanner.nextLine();
+        return memberAnswer.equalsIgnoreCase("yes");}
+
 
     // Discount per ticket by day: the text must match exactly
     public static double getDayDiscount(String dayOfWeek) {
