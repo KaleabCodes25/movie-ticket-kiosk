@@ -42,9 +42,18 @@ public class MovieTicketKiosk {
         final double MINIMUM_TICKET_PRICE = 5.00;
 
         // Price per ticket after the day discount, never below the minimum
+
         double ticketPrice = Math.max(basePrice - dayDiscount, MINIMUM_TICKET_PRICE);
         double subtotal = ticketPrice * ticketCount;
-        double memberDiscount = 0.00;                // no member discount yet
+
+        // Members get 10 percent off the tickets, from 3 tickets up
+
+        boolean isMember = memberAnswer.equalsIgnoreCase("yes");
+        double memberDiscount = 0.00;
+        if (isMember && ticketCount >= 3) {
+            memberDiscount = subtotal * 0.10;
+        }
+
         double total = subtotal - memberDiscount + SERVICE_FEE;
         long rewardPoints = Math.round(total);       // one point per dollar, rounded
 
@@ -59,7 +68,6 @@ public class MovieTicketKiosk {
         System.out.printf("Reward points:   %d%n", rewardPoints);
 
         scanner.close();                             // done reading: release the keyboard
-
 
     }
 
