@@ -37,7 +37,12 @@ public class MovieTicketKiosk {
             basePrice = 9.00;
         }
 
-        double dayDiscount = 3.00;
+        double dayDiscount;
+        switch (dayOfWeek) {
+            case "Tuesday" -> dayDiscount = 3.00;
+            case "Wednesday" -> dayDiscount = 2.00;
+            default -> dayDiscount = 0.00;}
+
         final double SERVICE_FEE = 1.50;
         final double MINIMUM_TICKET_PRICE = 5.00;
 
