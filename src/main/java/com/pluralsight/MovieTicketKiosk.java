@@ -38,13 +38,8 @@ public class MovieTicketKiosk {
         double ticketPrice = Math.max(basePrice - dayDiscount, MINIMUM_TICKET_PRICE);
         double subtotal = ticketPrice * ticketCount;
 
-        // Members get 10 percent off the tickets, from 3 tickets up
-
         boolean isMember = memberAnswer.equalsIgnoreCase("yes");
-        double memberDiscount = 0.00;
-        if (isMember && ticketCount >= 3) {
-            memberDiscount = subtotal * 0.10;
-        }
+        double memberDiscount = getMemberDiscount(subtotal, ticketCount, isMember);
 
         double total = subtotal - memberDiscount + SERVICE_FEE;
         long rewardPoints = Math.round(total);       // one point per dollar, rounded
@@ -89,6 +84,15 @@ public class MovieTicketKiosk {
             case "Wednesday" -> dayDiscount = 2.00;
             default -> dayDiscount = 0.00;}
         return dayDiscount;
+    }
+
+    // Members get 10 percent off the tickets, from 3 tickets up
+    public static double getMemberDiscount(double subtotal, int ticketCount, boolean isMember) {
+        double memberDiscount = 0.00;
+        if (isMember && ticketCount >= 3) {
+            memberDiscount = subtotal * 0.10;
+        }
+        return memberDiscount;
     }
 
 }
