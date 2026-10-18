@@ -28,13 +28,7 @@ public class MovieTicketKiosk {
         // Prices
 
         double basePrice = getBasePrice(age);
-
-
-        double dayDiscount;
-        switch (dayOfWeek) {
-            case "Tuesday" -> dayDiscount = 3.00;
-            case "Wednesday" -> dayDiscount = 2.00;
-            default -> dayDiscount = 0.00;}
+        double dayDiscount = getDayDiscount(dayOfWeek);
 
         final double SERVICE_FEE = 1.50;
         final double MINIMUM_TICKET_PRICE = 5.00;
@@ -85,6 +79,16 @@ public class MovieTicketKiosk {
             basePrice = 9.00;
         }
         return basePrice;
+    }
+
+    // Discount per ticket by day: the text must match exactly
+    public static double getDayDiscount(String dayOfWeek) {
+        double dayDiscount;
+        switch (dayOfWeek) {
+            case "Tuesday" -> dayDiscount = 3.00;
+            case "Wednesday" -> dayDiscount = 2.00;
+            default -> dayDiscount = 0.00;}
+        return dayDiscount;
     }
 
 }
