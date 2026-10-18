@@ -27,15 +27,8 @@ public class MovieTicketKiosk {
 
         // Prices
 
-        // Base price by age: the first true condition wins
-        double basePrice;
-        if (age < 13) {
-            basePrice = 8.50;
-        } else if (age < 65) {
-            basePrice = 12.00;
-        } else {
-            basePrice = 9.00;
-        }
+        double basePrice = getBasePrice(age);
+
 
         double dayDiscount;
         switch (dayOfWeek) {
@@ -77,9 +70,21 @@ public class MovieTicketKiosk {
         System.out.println();
         System.out.println("Thank you, " + customerName + ". " + closingLine);
 
-
         scanner.close();                             // done reading: release the keyboard
 
+    }
+
+    // Base price by age: the first true condition wins
+    public static double getBasePrice(int age) {
+        double basePrice;
+        if (age < 13) {
+            basePrice = 8.50;
+        } else if (age < 65) {
+            basePrice = 12.00;
+        } else {
+            basePrice = 9.00;
+        }
+        return basePrice;
     }
 
 }
