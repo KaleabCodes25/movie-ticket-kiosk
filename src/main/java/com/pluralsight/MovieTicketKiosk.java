@@ -72,6 +72,12 @@ public class MovieTicketKiosk {
         System.out.printf("Total:           $%.2f%n", total);
         System.out.printf("Reward points:   %d%n", rewardPoints);
 
+        // Groups of 4 or more get a different goodbye
+        String closingLine = ticketCount >= 4 ? "Enjoy the group night!" : "Enjoy the movie!";
+        System.out.println();
+        System.out.println("Thank you, " + customerName + ". " + closingLine);
+
+
         scanner.close();                             // done reading: release the keyboard
 
     }
